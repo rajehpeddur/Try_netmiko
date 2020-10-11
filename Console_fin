@@ -1,0 +1,44 @@
+from netmiko import ConnectHandler
+
+with open('Ios_file') as f:
+    commands_list = f.read().splitlines()
+
+
+# with open('devices_file') as f:
+#    devices_list = f.read().splitlines()
+
+# for devices in devices_list:
+#    print('Connecting to device" ' + devices)
+#   ip_address_of_device = devices
+#   ios_device = {
+#      'device_type': 'cisco_ios',
+#      'ip': ip_address_of_device,
+#     'port': '2018',
+#  'username': 'admin',
+#  'password': 'cisco!123',
+# }
+# net_connect = ConnectHandler(**ios_device)
+# output = net_connect.send_config_set(commands_list)
+# print(output)
+
+#def read_devices(devices_filename):
+   # devices = {}  # create our dictionary for storing devices and their info
+
+    with open('devices_file') as devices_file:
+        for device_line in devices_file:
+            device_info = device_line.strip().split(',')  # extract device info from line
+
+            device = {
+                      'device_type': device_info[0],
+                      'ip': device_info[1],
+                      'port': device_info[2]}  # create dictionary of device objects ...
+
+            #devices[device['ipaddr']] = device  # store our device in the devices dictionary
+            # note the key for devices dictionary entries is ipaddr
+
+    print('\n----- devices --------------------------')
+    #  pprint(devices)
+    net_connect = ConnectHandler(**device)
+    output = net_connect.send_config_set(commands_list)
+    print(output)
+# return devices
