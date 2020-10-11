@@ -1,0 +1,11 @@
+config t
+ vlan 10-20
+ exit
+ int range gig0/1-10
+ switchport access vlan 10
+ exit
+ int range gig0/11-20
+ switchport access vlan 10
+ exit
+ exit
+show vlan

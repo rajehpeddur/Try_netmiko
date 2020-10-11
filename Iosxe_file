@@ -1,0 +1,8 @@
+ int range GigabitEthernet0/0/0-3
+ no shut
+ end
+show inventory
+show ip int bri | in up
+show ver | in image
+show cdp ne
+ping vrf Mgmt-intf 10.76.76.160
